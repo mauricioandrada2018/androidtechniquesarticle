@@ -30,7 +30,12 @@ public class Main2Activity extends AppCompatActivity {
             return null;
         String[] result = new String[num_words];
         StringTokenizer stringTokenizer = new StringTokenizer(sentence.toLowerCase()," ,;:'!?.");
+
+        /**
+         * This Hashmap makes it easier to find out if a word has been countet yet
+         */
         HashMap<String, Word> map = new HashMap<>();
+
         while (stringTokenizer.hasMoreTokens()) {
             String word = stringTokenizer.nextToken();
             Word item = map.get(word);
@@ -50,7 +55,6 @@ public class Main2Activity extends AppCompatActivity {
 
     private class Word implements Comparable<Word> {
 
-
         private final String word;
         private int count;
 
@@ -62,6 +66,9 @@ public class Main2Activity extends AppCompatActivity {
         @Override
         public int compareTo(@NonNull Word word2) {
 
+            /**
+             * Compares the counts and if they are the same sort alphabetically in ascending order
+             */
             int result = word2.count;
 
             if (result == 0)
